@@ -6,7 +6,9 @@ app.locals.visits = 0;
 
 app
 .use((req, res, next) => {
-    console.log(`Visits: ${++res.app.locals.visits}`);
+	if (process.env.NODE_ENV != 'test') {
+        console.log(`Visits: ${++res.app.locals.visits}`);
+    }
     next();
 })
 
