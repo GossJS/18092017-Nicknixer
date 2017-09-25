@@ -42,14 +42,14 @@ app
             break;
     }
     
-    res.end(`${x} ${symbol} ${y} = ${result}`);
+    res.end(`${result}`);
 })
 
 .get('/kramer/:a1/:b1/:c1/:a2/:b2/:c2', (req, res) => {
     let delta = Number(req.params.a1) * Number(req.params.b2) - Number(req.params.b1) * Number(req.params.a2);
     let delta1 = Number(req.params.c1) * Number(req.params.b2) - Number(req.params.b1) * Number(req.params.c2);
     let delta2 = Number(req.params.c1) * Number(req.params.a2) - Number(req.params.a1) * Number(req.params.c2);
-    res.end(`x = ${delta1 / delta}, y = ${delta2 / delta}`);
+    res.end(`{"x":${delta1 / delta},"y":${delta2 / delta}}`);
 })
 
 // index route
